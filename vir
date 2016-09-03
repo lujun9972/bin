@@ -1,0 +1,22 @@
+#!/bin/bash
+EDITOR=vim
+if [ $# -gt 0 ]
+then
+	for file in $*
+	do
+	FILEPATH=$(dirname $file)
+	FILENAME=$(basename $file)
+	if [ -f "$FILEPATH/${FILENAME},v" -o "$FILEPATH/RCS/${FILENAME},v"  ]
+	then
+		co -l $file
+        fi
+        $EDITOR $file
+        ci  $file<<-END
+edit by $(whoami) at $(date)
+.
+END
+	done
+	else
+	echo "Usage:$(basename $0) filelists"
+fi
+

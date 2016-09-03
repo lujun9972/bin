@@ -1,0 +1,19 @@
+#!/bin/bash
+if [ $# -gt 0 ]
+then
+	file=$1;
+	shift
+	FILEPATH=$(dirname $file)
+	FILENAME=$(basename $file)
+	if [ -f "$FILEPATH/${FILENAME},v" -o "$FILEPATH/RCS/${FILENAME},v"  ]
+	then
+		co -l $file
+        fi
+        $file $@
+        ci  $file<<-END
+.
+END
+	else
+	echo "Usage:$(basename $0) command"
+fi
+

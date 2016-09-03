@@ -1,0 +1,49 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2012.01.19.06.51.52;	author lujun9972;	state Exp;
+branches;
+next	;
+
+
+desc
+@edit by lujun9972 at 2012年 01月 19日 星期四 14:51:52 CST
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@#!/bin/bash
+EDITOR=vim
+if [ $# -gt 0 ]
+then
+	for file in $*
+	do
+	FILEPATH=$(dirname $file)
+	FILENAME=$(basename $file)
+	if [ -f "$FILEPATH/${FILENAME},v" -o "$FILEPATH/RCS/${FILENAME},v"  ]
+	then
+		co -l $file
+        fi
+        $EDITOR $file
+	echo "please input comments"
+	read comments
+        ci  $file<<-END
+edit by $(whoami) at $(date)
+$comments
+.
+END
+	done
+	else
+	echo "Usage:$(basename $0) filelists"
+fi
+
+@
