@@ -10,7 +10,7 @@ function https_url_p ()
 
 uri=$1
 if https_url_p $uri;then
-    curl $uri | mpg123 -
+    curl -L $uri | mpg123 -
 else
     mpg123 $curi
 fi
