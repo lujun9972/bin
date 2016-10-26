@@ -1,16 +1,8 @@
 #!/bin/bash
 
-# play https mp3 using mpg123
+# play mp3 using mpg123
 
-function https_url_p ()
-{
-    local url=$1
-    echo $url |egrep "^https://" >/dev/null
-}
-
-uri=$1
-if https_url_p $uri;then
-    curl -L $uri | mpg123 -
-else
-    mpg123 $curi
-fi
+for uri in $@
+do
+    mpg123 $uri || curl -L $uri |mpg123 -
+done
