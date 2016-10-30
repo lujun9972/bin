@@ -4,5 +4,5 @@
 
 for uri in $@
 do
-    mpg123 $uri || curl -L $uri |mpg123 -
+    curl -L $uri |mpg123 - || mpg123 $uri 
 done
