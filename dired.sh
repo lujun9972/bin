@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-emacsclient -a "" -c -n --eval "(require 'dired)" --eval "(dired \"$(pwd)\")"
+emacsclient.sh --eval "(progn (require 'dired) (dired \"$(pwd)\"))"
