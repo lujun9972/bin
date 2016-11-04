@@ -1,9 +1,7 @@
 #!/bin/bash
 
-graphic_p=$(emacsclient -a "" --eval "(display-graphic-p)")
-
-if [ $graphic_p = "t" ];then
-    emacsclient -a "" -c -n "$@"
-else
+if [ -z $DISPLAY ];then
     emacsclient -a "" -t "$@"
+else
+    emacsclient -a "" -c -n "$@"
 fi
