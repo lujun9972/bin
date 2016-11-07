@@ -7,7 +7,7 @@ else
 fi
 
 if [ -d $file ];then
-    emacsclient.sh --eval "(image-dired \"${file}\")"
+    emacs -q --eval "(image-dired \"${file}\")"
 else
-    emacsclient.sh $file
+    emacs -q $file
 fi
