@@ -7,7 +7,7 @@ function live_p()
 {
     local remote=$1
     local port=$2
-    if echo >/dev/tcp/$remote/$port;then
+    if timeout 5 echo >/dev/tcp/$remote/$port;then
         echo "网络通了!"
     else
         echo "网络不通了!"
