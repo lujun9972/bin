@@ -14,14 +14,12 @@ function live_p()
     fi
 }
 
-old_state=$(live_p $target $port)
-
 while :
 do
-      sleep $interval
       current_state=$(live_p $target $port)
       if [ $current_state != $old_state ];then
           notify_send $current_state
       fi
       old_state=$current_state;
+      sleep $interval
 done
