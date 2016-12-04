@@ -17,8 +17,8 @@ function live_p()
 while :
 do
       current_state=$(live_p $target $port)
-      if [ $current_state != $old_state ];then
-          notify_send $current_state
+      if [ "$current_state" != "$old_state" ];then
+          notify-send $current_state
       fi
       old_state=$current_state;
       sleep $interval
