@@ -52,3 +52,33 @@ function continue_p()
           ;;
   esac
 }
+
+function repeat
+{
+    while [[ $# -ne 0 ]]
+    do
+        case $1 in
+            -t ) interval=$2
+                 shift;shift
+                 ;;
+            -c ) clear_flag=true
+                 shift
+                 ;;
+            *) break
+               ;;
+        esac
+    done
+
+    if [[ -z $interval ]];then
+        interval=10
+    fi
+
+    while :
+    do
+        if [[ ! -z $clear_flag ]];then
+            clear
+        fi
+        "$@"
+        sleep $interval
+    done
+}
