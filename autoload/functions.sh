@@ -35,7 +35,7 @@ function isalive()
 
 function verify_user()
 {
-    local eexpect_user=$1
+    local expect_user=$1
     local actual_user=$(whoami)
 
     if [[ $expect_user != $actual_user ]];then
@@ -55,13 +55,19 @@ function continue_p()
 
 function repeat
 {
+    local interval=10
+    local max_count
+    local clear_flag
     while [[ $# -ne 0 ]]
     do
         case $1 in
             -t ) interval=$2
                  shift;shift
                  ;;
-            -c ) clear_flag=true
+            -c ) max_count=$2
+                 shift;shift
+                 ;;
+            -C ) clear_flag=true
                  shift
                  ;;
             *) break
@@ -69,16 +75,18 @@ function repeat
         esac
     done
 
-    if [[ -z $interval ]];then
-        interval=10
-    fi
+    local count=0
 
     while :
     do
-        if [[ ! -z $clear_flag ]];then
+	if [[ -n "$max_count" && "$count" -ge "$max_count" ]];then
+		break
+	fi
+        if [[ ! -z "$clear_flag" ]];then
             clear
         fi
         "$@"
+	count=$(expr $count + 1)
         sleep $interval
     done
 }
