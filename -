@@ -1,5 +1,0 @@
-* mail forward
-[[Sat, 3 Sep 2016 08:44:00 +0800 (CST)]]
-修改/etc/aliases可以指定转发邮件给他人，append到文件中，甚至通过管道传递给程序. 
-但是append到文件时，这个文件的所有者必须是nobody...
-
