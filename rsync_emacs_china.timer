@@ -1,0 +1,14 @@
+[Unit]
+Description=Sync emacs-china elpa repos with rsync every 10 mins
+Documentation=http://elpa.emacs-china.org/
+
+[timer]
+OnUnitInactiveSec=10m
+Unit=rsync_emacs_china.service
+[X-ignore]
+OnCalendar=
+Persistent=
+
+
+[Install]
+WantedBy=multi-user.target
