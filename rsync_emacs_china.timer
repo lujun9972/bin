@@ -1,9 +1,10 @@
 [Unit]
-Description=Sync emacs-china elpa repos with rsync every 10 mins
+Description=Sync emacs-china elpa repos with rsync every 30 mins
 Documentation=http://elpa.emacs-china.org/
 
-[timer]
-OnUnitInactiveSec=10m
+[Timer]
+OnBootSec=15min
+OnUnitInactiveSec=30min
 Unit=rsync_emacs_china.service
 [X-ignore]
 OnCalendar=

@@ -1,0 +1,12 @@
+[Unit]
+Description=emacs daemon
+
+[Service]
+Type=forking
+User=lujun9972
+Group=lujun9972
+WorkingDirectory=/home/lujun9972
+ExecStart=LANG=zh_CN.UTF-8 /usr/bin/emacs --daemon
+
+[Install]
+WantedBy=multi-user.target
