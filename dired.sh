@@ -6,4 +6,4 @@ emacsclient.sh --eval "(progn (require 'dired)
                    (lambda ()
                        (interactive)
                         (kill-this-buffer)
-                        (save-buffers-kill-terminal 't))))"
+                        (save-buffers-kill-terminal 't))))" >/dev/null
