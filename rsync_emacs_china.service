@@ -8,12 +8,8 @@ After=network.target
 [Service]
 Type=simple
 TimeoutStartSec=infinity
-User=lujun9972
-Group=lujun9972
-WorkingDirectory=/home/lujun9972
-ExecStartPre=- mkdir -p /home/lujun992/emacs_plugins
-ExecStart=/usr/bin/rsync -avz rsync://elpa.emacs-china.org/elpa /home/lujun9972/emacs_plugins
-# ExecStart=/bin/sh -c 'date>/tmp/t.txt'
-
-[Install]
-WantedBy=rsync_emacs_china.timer
+User=root
+Group=root
+WorkingDirectory=/root
+ExecStartPre=/usr/bin/mkdir -p /media/emacs_plugins
+ExecStart=/usr/bin/rsync -avz rsync://elpa.emacs-china.org/elpa /media/emacs_plugins
