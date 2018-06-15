@@ -1,0 +1,17 @@
+[Unit]
+Description=update system with pacman
+Documentation=http://elpa.emacs-china.org/
+After=network.target
+After=syslog.target
+# OnFailure=
+
+[Service]
+Type=simple
+TimeoutStartSec=infinity
+User=root
+Group=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/pacman -Syu --noconfirm
+
+[Install]
+WantedBy=multi-user.service
