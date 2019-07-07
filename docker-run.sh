@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 if [[ -z "$*" ]];then
-    exec $0 $(basename $0)
+    container="$(basename -s .sh $0)"
+    exec $0 "${container}"
 fi
 container="$1"
 shift
