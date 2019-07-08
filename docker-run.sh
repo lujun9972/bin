@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [[ -z "$*" ]];then
-    container="$(basename -s .sh $0)"
+    container="$(basename -s .docker $0)"
     exec $0 "${container}"
 fi
 container="$1"
