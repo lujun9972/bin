@@ -11,4 +11,4 @@ if [[ -n "$(docker container ls -qa -f name=^${container}$)" ]];then
     exit 0
 fi
 image="lujun9972/${container}"
-docker run -it --name ${container} --device /dev/dri -v /dev/shm:/dev/shm --device /dev/snd -v /tmp/.X11-unix/:/tmp/.X11-unix -e DISPLAY=${DISPLAY}  -v /run/user/${UID}/pulse:/run/user/${UID}/pulse -v /etc/machine-id:/etc/machine-id $@ "${image}"
+docker run -it --name ${container} --device /dev/dri -v /dev/shm:/dev/shm --device /dev/snd -v /tmp/.X11-unix/:/tmp/.X11-unix -e DISPLAY=${DISPLAY}  -v /run/user/${UID}/pulse:/run/user/${UID}/pulse -v /etc/machine-id:/etc/machine-id -v /usr/share/fonts/:/usr/share/fonts/ $@ "${image}"
