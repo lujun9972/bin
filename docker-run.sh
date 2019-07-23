@@ -6,7 +6,7 @@ fi
 container="$1"
 shift
 # search if then container exist
-if [[ -n "$(docker container ls -qa -f name=${container})" ]];then
+if [[ -n "$(docker container ls -qa -f name=^${container}$)" ]];then
     docker start -i $@ ${container}
     exit 0
 fi
