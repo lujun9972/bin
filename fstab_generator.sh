@@ -7,7 +7,7 @@ function help()
 usage: ${0##*/} [+-o options] [+-dp} [--] device dir
 EOF
 }
-option="defaults"
+option="defaults,noatime"
 dump=0
 pass=0
 while getopts :o:dp OPT; do
