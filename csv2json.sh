@@ -15,13 +15,10 @@ if [ ! -f "$csv_file" ]; then
     exit 1
 fi
 
-# 读取csv文件第一行，获取属性名
-header=$(head -n 1 "$csv_file")
-
 # 用awk命令将csv文件转换为json格式数据
-awk -v header="$header" 'BEGIN {
+awk  'NR == 1 {
     # 将属性名字符串分割为数组
-    split(header, fields, ",")
+    split($0, fields, ",")
     # 输出json格式数据的开头
     print "["
     first_record = 1

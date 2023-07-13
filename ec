@@ -35,9 +35,10 @@ change_focus() {
 
 # try switching to the frame incase it is just minimized
 # will start a server if not running
-test "$(visible_frames)" -eq "1" && change_focus
+echo $(visible_frames)
+[[ "$(visible_frames)" -eq "1" ]] && change_focus
 
-if [ "$(visible_frames)" -lt  "2" ]; then # need to create a frame
+if [[ "$(visible_frames)" -lt  "2" ]]; then # need to create a frame
   # -c $@ with no args just opens the scratch buffer
   emacsclient -n -c "$@" && change_focus
 else # there is already a visible frame besides the daemon, so
